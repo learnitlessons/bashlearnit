@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for color in red blue yellow green
+do
+	echo "My favorite color is $color"
+done

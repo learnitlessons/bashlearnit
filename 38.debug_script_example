@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Enable command printing for debugging"
+set -x
+
+# Error handling funnction 
+
+error_exit() {
+	echo "Error $1" >&2
+	exit 1
+}
+
+# Cleanup function
+cleanup() {
+	echo "Cleaning up..."
+	rm -f /tmp/tempfile
+}
+
+# Set trap to call cleanup function on exit
+trap cleanup EXIT
+
+echo "Starting Script"
+
+# Create a temp file
+touch /tmp/tempfile || error_exit "Failed to create temporary file"
+
+# Try to write to the file
+echo "Hello, World!" > /tmp/tempfile || error_exit "Failed to write to the temp file"
+
+# Try to read from the non-existent file (this'll cause an error)
+cat /tmp/non_existent_file || error_exit "Failed to read non-existent file"
+
+echo "This line won't be reached due to the prevoius error"
+
+
+
+
+
+
+
+
+
+

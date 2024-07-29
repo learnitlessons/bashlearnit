@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Try to create a directory
+mkdir my_directory
+
+# Check if the mkdir command was a success
+if [ $? -eq 0 ]; then
+	echo "Directory created successfully"
+else
+	echo "Failed to create a directory"
+	exit 1
+fi
+

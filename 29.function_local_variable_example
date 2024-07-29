@@ -1,0 +1,9 @@
+#!/bin/bash
+
+my_function() {
+	local my_variable="I'm local"
+	echo $my_variable
+}
+
+my_function # It'll print "I'm local"
+echo $my_variable # It'll do nothing, because my_variable is local to the function

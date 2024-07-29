@@ -1,0 +1,5 @@
+until [ condition ]
+do
+	# Commands to be executed
+done
+

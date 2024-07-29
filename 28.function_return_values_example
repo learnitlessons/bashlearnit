@@ -1,0 +1,9 @@
+#!/bin/bash
+
+add_numbers() {
+	local sum=$(( $1 + $2 ))
+	echo $sum
+}
+
+result=$(add_numbers 5 4)
+echo "The sum is: $result"

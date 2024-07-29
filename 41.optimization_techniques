@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# Basic optimization techniques
+# 1. Use built-in commands
+# Slower 
+echo "Hello, World!"
+# Faster 
+printf "Hello, World!"
+
+#2. Avoid unnecessary commands
+# Slower
+cat file.txt | grep "pattern"
+# Faster
+grep "pattern" file.txt
+
+#3. Use shell arithmetic instead of expr
+# Slower
+result=$(expr $a + $b)
+# Faster
+result=$((a + b))
+
+#4. Use double brackets for conditionals
+# Slower
+if [ "$a" = "$b" ]; then
+# Faster
+if [[ "$a" = "$b" ]]; then
+
+
+# Advanced optimization techniques
+#1. Use command grouping
+# Slower
+(cd /tmp && echo "In tmp" && ls)
+# Faster
+{ cd /tmp && echo "In tmp" && ls }
+
+#2. Use process substitution
+# Slower
+diff < (sort file1) <(sort file2)
+# Faster
+sort file1 > sorted1
+sort file2 > sorted2
+diff sorted1 sorted2
+
+#3. Use arrays insted of multiple variables
+# Less efficient example
+value1="apple"
+value2="banana"
+value3="grape"
+# More efficient example
+fruits=("apple" "banana" "grape")
+
+#4. Use 'read' with here-string for parsing
+# Slower
+echo "line1\nline2\nline3" | while read line; do
+	echo "Line: $line"
+done
+
+# Faster
+while read line; do 
+	echo "Line: $line"
+done <<< "line1
+line2
+line3"
+
+# Optimization for large datasets
+#1. Use 'awk' for complex text processing
+# Slower
+while read line; do
+	field1=$(echo $line | cut -d',' -f1)
+	field2=$(echo $line | cut -d',' -f2)
+	echo "$field1 $field2"
+done < large_file.csv
+# Faster
+awk -F',' '{print $2 " " $1}' large_file.csv
+
+#2. Use 'sort -u' insted of 'sort | uniq'
+# Slower
+sort large_file.txt | uniq
+# Faster
+sort -u large_file.txt
+
+#3. Use 'grep -F' for fixed srings
+# Slower
+grep "exact string" large_file.txt
+# Fater 
+grep -F "exact string" large_file.txt
+
+#4. Use 'parallel' for multi-core processing
+cat large_file.txt | parallel --pipe awk '{print $2}'
+
+# Profiling your scripts
+#1. Use 'time'
+time ./my_script.sh
+#2. Use 'set -x'
+
+
+
+
+
+
+
+
+
+
+
+

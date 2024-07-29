@@ -1,0 +1,7 @@
+!/bin/bash
+
+echo "DEBUG: Starting Script..."
+var="Hello,World!"
+echo "DEBUG: variable is set to: $var"
+# ... more commends here ...
+echo "DEBUG: Ending Script..."

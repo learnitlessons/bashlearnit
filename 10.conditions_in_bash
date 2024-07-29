@@ -1,0 +1,16 @@
+# File tests:
+-f file: True if the file exists and is a regular file
+-d file: True if the file exists and is a directory
+-r file: True if the file exists and readable
+
+# String tests:
+-z string: True if string is empty
+-n string: True if string is not empty
+string = string: True if the strings are equal
+string != string: True if the strings are not equal
+
+# Numeric comparisions:
+num1 -eq num2: True if the numbers are equal
+num1 -ne num2: True if the numbers are not equal
+num1 -lt num2: True if the num1 is less then num2
+num1 -gt num2: True if the num1 is greater then num2

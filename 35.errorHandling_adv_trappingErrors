@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cleanup() {
+	echo "Cleaning up temporary files..."
+	rm -f /tmp/my_temp_file
+}
+
+trap cleanup EXIT
+
+# Script commands here
+
+touch /tmp/my_temp_file
+# ... add more commands here
+
+echo "Script completed."
+
+

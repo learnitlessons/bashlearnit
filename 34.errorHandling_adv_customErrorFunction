@@ -1,0 +1,14 @@
+#!/bin/bash
+
+error_exit() {
+	echo "Error: $1" >&2
+	exit 1
+}
+
+# Usage
+
+cd /path/to/directory || error_exit "Failed to change directory"
+touch new_file.txt || error_exit "Failed to create new file"
+
+echo "All operations completed successfully"
+

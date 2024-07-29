@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Function to check if a number is even or odd
+
+check_even_odd() {
+	if (( $1 % 2 ==0 )); then
+		echo "$1 is even"
+	else
+		echo "$1 is odd"
+	fi
+}
+
+# Function to generate a random number between 1 and 10
+
+generate_random_number() {
+	local random_num=$(( RANDOM % 10 + 1 ))
+	echo $random_num
+}
+
+# Main script
+echo "Welcome to the number checker"
+
+for i in {1..5}; do
+	number=$(generate_random_number)
+	result=$(check_even_odd $number)
+	echo "Random number: $i: $result"
+done
+
+echo "Thanks for using the number checker!" 
+
+
+
+
+
+
+
+
+
+
+

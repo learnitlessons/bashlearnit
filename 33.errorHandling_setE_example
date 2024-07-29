@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Try to change to a directory, exit if it fails
+
+cd /path/to/dir || exit 1
+touch new_file.txt
+chmod 644 new_file.txt
+
+# The scripot continues here only if cd was successful
+echo "All operations completed successfully"

@@ -1,0 +1,111 @@
+#!/bin/bash
+
+echo "Welcome to the Enhanced Interactive Menu Script!"
+
+
+
+while true
+
+do
+
+    echo "Please choose an option:"
+
+    echo "1. Say hello"
+
+    echo "2. Check the date"
+
+    echo "3. List files"
+
+    echo "4. Clear the screen"
+
+    echo "5. Play 'Guess the Number'"
+
+    echo "6. Exit"
+
+    
+
+    read -p "Enter your choice (1-6): " choice
+
+    
+
+    case $choice in
+
+        1)
+
+            echo "Hello there! Nice to meet you."
+
+            ;;
+
+        2)
+
+            echo "Today's date is: $(date)"
+
+            ;;
+
+        3)
+
+            echo "Files in the current directory:"
+
+            ls -l
+
+            ;;
+
+        4)
+
+            clear
+
+            echo "Screen cleared!"
+
+            ;;
+
+        5)
+
+            secret_number=$(( RANDOM % 10 + 1 ))
+
+            echo "I'm thinking of a number between 1 and 10."
+
+            while true; do
+
+                read -p "What's your guess? " guess
+
+                if [ "$guess" -eq "$secret_number" ]; then
+
+                    echo "Congratulations! You guessed it!"
+
+                    break
+
+                elif [ "$guess" -lt "$secret_number" ]; then
+
+                    echo "Too low. Try again!"
+
+                else
+
+                    echo "Too high. Try again!"
+
+                fi
+
+            done
+
+            ;;
+
+        6)
+
+            echo "Thank you for using the Enhanced Interactive Menu Script. Goodbye!"
+
+            exit 0
+
+            ;;
+
+        *)
+
+            echo "Invalid option. Please choose a number between 1 and 6."
+
+            ;;
+
+    esac
+
+    
+
+    echo # This just prints a blank line for better readability
+
+done

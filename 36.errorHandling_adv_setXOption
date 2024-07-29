@@ -1,0 +1,7 @@
+#!/bin/bash
+set -x
+
+echo "This is a debug message"
+ls /path/to/file
+echo "This message won't be reached if the directory doesn't exist"
+

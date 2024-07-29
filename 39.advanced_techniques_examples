@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# Parameter expansion examples
+
+name=""
+echo "1. Default value: ${name:-"John Doe"}"
+
+name=${name:="Jane Doe"}
+echo "2. Assign default: $name"
+
+echo "3. Alternate value: ${name:+"Hello, $name"}"
+
+string="Hello, World!"
+echo "4. Substring: ${string:7:5}"
+
+echo "5. String length: ${#string}"
+
+# Indirect references
+fruit="apple"
+apple="red"
+echo ${!fruit}
+
+# Advanced Array Operations
+# Associative Arrays
+
+declare -A fruits
+fruits[apple]="red"
+fruits[banana]="yellow"
+fruits[grape]="purple"
+
+echo ${fruits[banana]} # yellow
+echo ${!fruits[@]} # apple banana grape
+echo ${fruits[@]} # red yellow purple
+
+# Array Slicing 
+numbers=(1 2 3 4 5 6)
+echo ${numbers[@]:1:3} 2 3 4
+
+# Process substitution
+diff <(ls dir1) <(ls dir2)
+
+# Brace Expansion
+echo {1..5} 
+echo {a..e}
+echo file{1,2,3}.txt
+
+# Advanced input/output redirection
+#1. Redirect both stdout and stderr to a file
+command > file1.txt 2>&1
+#2. Use a here-document for multi-line input
+cat << EOF > file.txt
+This is line 1
+This is line 2
+EOF
+#3. Use process substitution for multi-line input
+while read line; do
+	echo "Line: $line"
+done < <(ls -l)
+
+
+# Subshells and command grouping
+#1. Changes in subshells don't affect the parent
+(cd /tmp && ls)
+pwd # Still in the original directory
+
+#2. Command gouping executes in the current shell
+{ cd /tmp && ls; }
+pwd # Now in  /tmp
+
+# Traps and signals
+cleanup() {
+	echo "Cleaning up..."
+	# Add cleanup code her
+}
+
+trap cleanup EXIT
+trap 'echo "Interrupt received"' INT
+
+# Recursive functions
+traverse() {
+	for file in "$1"/*; do
+		if [ -d "$file" ]; then
+			traverse "$file"
+		else
+			echo $file
+		fi
+	done
+}
+
+# Parsing command-line options
+while getopts ":a:b:" opt; do
+	case $opt in
+		a)
+			echo "Option -a was triggered, Parameter: $OPTARG" >&2
+			;;
+		b)
+			echo "Option -b was triggered, Parameter: $OPTARG" >&2
+			;;
+		\?)
+			echo "Invalid Option -$OPTARG" >&2
+			;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
